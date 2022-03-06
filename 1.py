@@ -33,12 +33,12 @@ id_all = str(input("Enter the id number pleace:"))
 if len(id_all) != 18:
     print('你再瞎几把乱输我就要报警啦！！！😒')
     quit()
-if id_all[0:1] == 0:
+if id_all[0] == 0:
     print('你再瞎几把乱输我就要报警啦！！！😒')
     quit()
-if id_all[0:1] == 'x':
+if id_all[-1] == 'x':
     id_18 = 10
-elif id_all[0:1] == 'X':
+elif id_all[-1] == 'X':
     id_18 = 10
 else:
     id_18 = (int(id_all)) % 10
