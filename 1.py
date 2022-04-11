@@ -1,6 +1,3 @@
-#资源导入部分
-from msilib.schema import tables
-
 #函数定义部分
 def separate(id_17):
     a = len(str(id_17))
