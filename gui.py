@@ -42,5 +42,47 @@ canvas.create_window(100, 50, width=100, height=20, window=entry)
 
 
 
+
+
+
+
+def verify_id(id):
+    #通过前十七位生成校验码（计算出的）
+    number = id.replace(" ", "")
+    if number == "":
+        return "null"
+    if len(number) == 18:
+        number = number[:17]
+    if len(number) != 17:
+        return "error"
+    weight = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+    verifyCode = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"]
+    numberLetter = list(number)
+    sum = 0
+    for index in range(len(numberLetter)):
+        sum += int(numberLetter[index]) * weight[index]
+    global verifyCodeResult
+    verifyCodeResult = verifyCode[sum % 11]
+    # 用计算出的校验码验证最后一位，一样则输出1，不一样则输出0
+    number = id.replace(" ", "")
+    if len(number) != 18:
+        return 0
+    number = number.upper()
+    verifyNumber = number[17:]
+    if verifyNumber == verifyCodeResult:
+        return 1
+    return 0
+
+
+
+
+
+
+
+
+
+
+
+
 # 刷新循环
 window.mainloop()
